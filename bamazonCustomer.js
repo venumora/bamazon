@@ -3,7 +3,7 @@ var { ProductManagement } = require('./ProductManagement');
 var productManagementObj = new ProductManagement();
 var productIds = [];
 
-function success(result) {
+function successCallback(result) {
     result.forEach(product => {
         productIds.push({value: product.item_id});
         console.log(`Item ID: ${product.item_id}`);
@@ -35,12 +35,12 @@ function success(result) {
     });
 }
 
-function fail() {
+function failCallback() {
     console.log('Internal Server Error!!');
 }
 
 function insufficientStock() {
-    console.log('Insufficient quantity!');
+    console.log('Insufficient quantity!');      
 }
 
 function orderSuccess(success, quantity, total) {
@@ -48,7 +48,7 @@ function orderSuccess(success, quantity, total) {
         console.log(`An order has been placed for ${quantity} unit(s). ${total}$ USD is deducted from your account.`);
     } else {
         console.log('Order is not completed!! Please call UCB');
-    }
+    }  
 }
 
-productManagementObj.getAll(success, fail);
+productManagementObj.getAll(successCallback, failCallback);

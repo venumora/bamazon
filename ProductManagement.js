@@ -53,7 +53,7 @@ function ProductManagement() {
 
     this.getAll = function(success, fail) {
         connectionPool.getConnection(function(err, connection) {
-            connection.query("SELECT item_id, product_name, department_name, price FROM products",
+            connection.query("SELECT item_id, product_name, department_name, price FROM products WHERE stock_quantity > 0",
             function(error, result) {
                 if(error) {
                     fail();
